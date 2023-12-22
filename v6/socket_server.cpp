@@ -68,6 +68,10 @@ int main() {
     printf("Listen succeeded\n");
     printf("wait...\n"); 
  
+    /**********************************/
+    /* Step 4. accept()               */
+    /**********************************/
+ 
     while (1) { 
         int cs; 
         // クライアントの情報を得る場合 
@@ -80,11 +84,18 @@ int main() {
             perror("accept"); 
             return -1;
         } 
+
+        /**********************************/
+        /* Step 5. read/write()           */
+        /**********************************/
+        // read/write()は今回は省略
  
         // accept した相手先を表示. 
         printf("accepted.\n");
         sockaddr_print((struct sockaddr*) &client_sa, len);
-        // 親プロセス 
+        /**********************************/
+        /* Step 6. close()                */
+        /**********************************/
         close(cs);
     } 
 
